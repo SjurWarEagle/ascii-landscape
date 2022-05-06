@@ -1,6 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
-import {GenerateService} from "./generate.service";
+import { GenerateService } from './generate.service';
 
 @Controller('/generate')
 export class GenerationController {

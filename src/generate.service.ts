@@ -8,11 +8,7 @@ export class GenerateService {
     private readonly ICON_HOUSE_1 = '🏠';
     private readonly ICON_HOUSE_2 = '🏡';
     private readonly ICON_HOUSE_3 = '🏭';
-    private readonly ICON_HOUSE_4 = '🚜';
     private readonly ICON_SKY_CLOUD = '☁';
-    private readonly ICON_TREE_PALM = '🌴';
-    private readonly ICON_TREE_CHRISTMAS = '🎄';
-
 
     generateNew(): string {
         let rc = '';
@@ -28,13 +24,17 @@ export class GenerateService {
 
     private wrapInHtml(rc: string) {
         rc = rc.replaceAll('_', '&nbsp;');
-        return `<html>`
-            + `<head><style>body {  font-family: 'Courier New', monospace;} pre {  background-color: cornflowerblue;}</style></head>`
-            + `<div style='display: inline-block'><pre>`
-            + `${rc}`
-            + `</pre></div>`
-            + `</html>`;
-
+        return (
+            `<html lang="en">` +
+            `<head>` +
+            `<title>Landscape</title>` +
+            `<style>body {  font-family: 'Courier New', monospace;} pre {  background-color: cornflowerblue;}</style>` +
+            `</head>` +
+            `<div style='display: inline-block'><pre>` +
+            `${rc}` +
+            `</pre></div>` +
+            `</title>`
+        );
     }
 
     private generateSkyLayer(cnt: number): string {
