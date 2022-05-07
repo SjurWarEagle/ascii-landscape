@@ -1,6 +1,7 @@
 import {Injectable} from '@nestjs/common';
 import {Chance} from 'chance';
 import {Weather} from "./types/weather";
+import {Culture} from "./types/culture";
 
 @Injectable()
 export class GenerateService {
@@ -17,6 +18,9 @@ export class GenerateService {
     private readonly ICON_HOUSE_1 = '🏠';
     private readonly ICON_HOUSE_2 = '🏡';
     private readonly ICON_HOUSE_3 = '🏭';
+    private readonly ICON_HOUSE_4 = '🎪';
+    private readonly ICON_HOUSE_ASIAN_1 = '🏯';
+    private readonly ICON_HOUSE_CASTLE_1 = '🏰';
     private readonly ICON_SKY_CLOUD = '☁';
     private readonly ICON_SKY_CLOUD_RAIN = '🌧';
     private readonly ICON_SKY_SUN_1 = '☀';
@@ -26,11 +30,12 @@ export class GenerateService {
     generateNew(): string {
         let rc = '';
         const weather = this.generateWeather();
+        const culture = this.generateCulture();
         rc += this.generateSkyLayerWithSun(this.COLUMNS, weather);
         for (let x = 0; x < 3; x++) {
             rc += this.generateSkyLayer(this.COLUMNS, weather);
         }
-        rc += this.generateBuildingLayer(this.COLUMNS);
+        rc += this.generateBuildingLayer(this.COLUMNS, culture);
 
         return this.mapToJson(rc);
     }
@@ -51,7 +56,7 @@ export class GenerateService {
                 console.error('Not handled: ' + weather);
         }
 
-        rc+='\n';
+        rc += '\n';
         return rc;
     }
 
@@ -73,30 +78,28 @@ export class GenerateService {
             }
         }
 
-        rc+='\n';
+        rc += '\n';
         return rc;
     }
 
-    private generateBuildingLayer(cnt: number): string {
+    private generateBuildingLayer(cnt: number, culture: Culture): string {
         let rc = '';
         for (let i = 0; i < cnt; i++) {
-            rc += this.chance.weighted([
-                this.ICON_TREE_1,
-                this.ICON_TREE_2,
-                this.ICON_HOUSE_1,
-                this.ICON_HOUSE_2,
-                this.ICON_HOUSE_3,
-                this.ICON_EMPTY
-            ], [
-                5,
-                5,
-                2,
-                2,
-                1,
-                6
-            ]);
+            switch (culture) {
+                case Culture.MEDIVAL_ASIAN:
+                    rc += this.chance.weighted([this.ICON_TREE_1, this.ICON_TREE_2, this.ICON_HOUSE_ASIAN_1, this.ICON_EMPTY], [5, 5, 2, 6]);
+                    break;
+                case Culture.MEDIVAL_EUROPE:
+                    rc += this.chance.weighted([this.ICON_TREE_1, this.ICON_TREE_2, this.ICON_HOUSE_CASTLE_1, this.ICON_HOUSE_4, this.ICON_EMPTY], [5, 5, 2, 1, 2]);
+                    break;
+                case Culture.MODERN_EUROPE:
+                    rc += this.chance.weighted([this.ICON_TREE_1, this.ICON_TREE_2, this.ICON_HOUSE_1, this.ICON_HOUSE_2, this.ICON_HOUSE_3, this.ICON_EMPTY], [5, 5, 2, 2, 1, 6]);
+                    break;
+                default:
+                    console.error('Unknown culture:', culture);
+            }
         }
-        rc+='\n';
+        rc += '\n';
 
         return rc;
     }
@@ -111,6 +114,10 @@ export class GenerateService {
 
         return {landscape: formattedReturn, rows: rows, asText: rc};
 
+    }
+
+    private generateCulture(): Culture {
+        return this.chance.weighted([Culture.MEDIVAL_EUROPE, Culture.MEDIVAL_ASIAN, Culture.MODERN_EUROPE], [1, 1, 5]);
     }
 
     private generateWeather(): Weather {
