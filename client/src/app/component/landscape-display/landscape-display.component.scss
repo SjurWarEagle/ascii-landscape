@@ -1,0 +1,21 @@
+.landscape {
+  //width: 150px;
+  //height: 150px;
+  display: grid;
+  grid-template-columns: repeat(5, 25px);
+  grid-template-rows: 25px;
+  justify-content: stretch;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+.landscape-field {
+  //border: darkgray solid 1px;
+  width: 25px;
+  height: 25px;
+  //max-width: 25px;
+  //max-height: 25px;
+  align-self: center;
+  justify-self: stretch;
+  background-color:cornflowerblue;
+}
