@@ -24,7 +24,7 @@ COPY ./server/tsconfig.build.json /project/server
 
 WORKDIR /project/server
 RUN npm install
-RUN npm run lint
+RUN npm run lint:fix
 RUN npm run build
 
 #Client
@@ -39,7 +39,7 @@ COPY ./client/tsconfig.app.json /project/client/
 
 WORKDIR /project/client
 RUN npm install
-RUN npm run lint
+RUN npm run lint:fix
 RUN npm run build
 
 #########
