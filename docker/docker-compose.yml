@@ -5,9 +5,9 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    ports:
     # container:host
-      - "90:3000"
+    ports:
+      - "80:80"
     restart: unless-stopped
 
 
