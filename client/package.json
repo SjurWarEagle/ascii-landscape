@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --watch --proxy-config proxy.conf.json",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "build:prod": "ng build  --configuration production",
     "test": "ng test",
     "ng:update": "ng update",
     "ncu": "ncu -x typescript -u ",
