@@ -48,6 +48,7 @@ FROM node:18.1.0
 RUN mkdir -p /project
 
 COPY --from=buildstage /project/server/dist /project/server/dist
+COPY --from=buildstage /project/client/dist /project/client/dist
 
 RUN apt update -y && \
     apt install -y --no-install-recommends --no-install-suggests \
@@ -63,7 +64,6 @@ COPY ./server/LICENSE /project/server/
 COPY ./server/.eslintrc.js /project/server/
 COPY ./server/tsconfig.json /project/server/
 
-COPY ./client/dist /project/client/dist
 COPY ./client/angular.json /project/client
 COPY ./client/package.json /project/client/
 COPY ./client/package-lock.json /project/client/
