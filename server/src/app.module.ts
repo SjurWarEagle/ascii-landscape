@@ -7,10 +7,12 @@ import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
-  imports: [  ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '../', 'public'),
-    exclude: ['/api*','/generate*'],
-  })],
+  imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../', 'public'),
+      exclude: ['/api*', '/generate*'],
+    }),
+  ],
   controllers: [AppController, GenerationController],
   providers: [AppService, GenerateService],
 })
