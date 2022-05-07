@@ -1,6 +1,5 @@
 <!--{{landscape}}-->
 <!--<hr>-->
-<div class="landscape">
+<div class="landscape" [cdkCopyToClipboard]="landscapeAsText">
 <span *ngFor="let field of landscape" [innerHTML]="asImage(field)" class="landscape-field"></span>
-
 </div>

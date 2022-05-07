@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b899792a-b42d-45bb-ae3f-e9a802f9dadf" name="Changes" comment="* add client to docker">
+    <list default="true" id="b899792a-b42d-45bb-ae3f-e9a802f9dadf" name="Changes" comment="* add copy landscape">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/component/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/component/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/generate.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/generate.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651955762664</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="* make start page show grid of landscapes">
+      <created>1651956420542</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1651956420542</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +301,8 @@
     <MESSAGE value="* add client" />
     <MESSAGE value="* add client&#10;* add client-linter" />
     <MESSAGE value="* add client to docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="* add client to docker" />
+    <MESSAGE value="* make start page show grid of landscapes" />
+    <MESSAGE value="* add copy landscape" />
+    <option name="LAST_COMMIT_MESSAGE" value="* add copy landscape" />
   </component>
 </project>

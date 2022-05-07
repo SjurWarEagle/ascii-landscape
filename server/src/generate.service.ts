@@ -32,8 +32,6 @@ export class GenerateService {
         }
         rc += this.generateBuildingLayer(this.COLUMNS);
 
-        // console.log('#'+rc+'#');
-        // console.log(this.mapToJson(rc));
         return this.mapToJson(rc);
     }
 
@@ -44,14 +42,16 @@ export class GenerateService {
                 rc += this.ICON_EMPTY;
                 break;
             case Weather.RAIN:
-                rc += this.chance.weighted([this.ICON_SKY_CLOUD_RAIN, this.ICON_SKY_SUN_RAIN], [2, 7]);
+                rc += this.chance.weighted([this.ICON_SKY_CLOUD_RAIN, this.ICON_SKY_SUN_3, this.ICON_SKY_SUN_RAIN], [2, 1, 7]);
                 break;
             case Weather.SUNNY:
-                rc += this.ICON_SKY_SUN_1;
+                rc += this.chance.weighted([this.ICON_SKY_SUN_3, this.ICON_SKY_SUN_1, this.ICON_EMPTY], [2, 7, 1]);
                 break;
             default:
                 console.error('Not handled: ' + weather);
         }
+
+        rc+='\n';
         return rc;
     }
 
@@ -73,6 +73,7 @@ export class GenerateService {
             }
         }
 
+        rc+='\n';
         return rc;
     }
 
@@ -95,6 +96,7 @@ export class GenerateService {
                 6
             ]);
         }
+        rc+='\n';
 
         return rc;
     }
@@ -107,7 +109,7 @@ export class GenerateService {
             .filter(x => x.length > 0)
             .map(y => [...y])
 
-        return {landscape: formattedReturn, rows: rows};
+        return {landscape: formattedReturn, rows: rows, asText: rc};
 
     }
 

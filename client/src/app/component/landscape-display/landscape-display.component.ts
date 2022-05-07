@@ -10,6 +10,7 @@ import {HtmlMapperService} from "../../service/html-mapper.service";
 })
 export class LandscapeDisplayComponent implements OnInit {
   public landscape: string[] = [];
+  public landscapeAsText: string='';
 
   constructor(private http: HttpClient, private htmlMapper:HtmlMapperService) {
   }
@@ -26,6 +27,7 @@ export class LandscapeDisplayComponent implements OnInit {
     const rc = await this.http.get('/api/generate/new').toPromise();
     console.log(rc);
     this.landscape = [];
+    this.landscapeAsText = (rc as any).asText;
     ((rc as any).landscape as string[]).forEach(line => this.landscape.push(...line));
   }
 
