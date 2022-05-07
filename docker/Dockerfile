@@ -17,6 +17,7 @@ COPY ./server/src /project/server/src
 COPY ./server/package.json /project/server
 COPY ./server/package-lock.json /project/server
 COPY ./server/LICENSE /project/server
+COPY ./server/.prettierrc /project/server
 COPY ./server/.eslintrc.js /project/server
 COPY ./server/tsconfig.json /project/server
 COPY ./server/tsconfig.build.json /project/server
