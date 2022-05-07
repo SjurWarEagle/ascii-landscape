@@ -7,9 +7,9 @@ pre {
   background-color: cornflowerblue;
 }
 
-.container{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.container {
+  display: grid;
+  //grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, min-content);
   gap: 10px;
 }
