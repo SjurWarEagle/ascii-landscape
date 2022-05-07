@@ -77,6 +77,7 @@ RUN rm -rf /etc/apt/apt.conf.d/90nginx
 COPY docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
 # COPY docker/nginx/nginx.conf /etc/nginx/conf.d/project.conf
 COPY docker/scripts/start_all.sh /project
+RUN chmod 777 /project/start_all.sh
 
 WORKDIR /project/server
 RUN npm install  --omit=dev
