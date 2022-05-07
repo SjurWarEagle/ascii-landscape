@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b899792a-b42d-45bb-ae3f-e9a802f9dadf" name="Changes" comment="* WIP client-structure">
-      <change afterPath="$PROJECT_DIR$/client/src/app/service/html-mapper.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/types/weather.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/component/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/component/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/app/app.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/component/landscape-display/landscape-display.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/generate.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/generate.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/generation.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/generation.controller.ts" afterDir="false" />
+    <list default="true" id="b899792a-b42d-45bb-ae3f-e9a802f9dadf" name="Changes" comment="* add client">
+      <change afterPath="$PROJECT_DIR$/docker/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/docker/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/docker/docker-compose.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +73,7 @@
       <recent name="E:\IdeaProjects\ascii-landscape\client" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Angular CLI Server (client)">
+  <component name="RunManager" selected="npm.lint">
     <configuration name="Angular Application (client)" type="JavascriptDebugType" uri="http://localhost:4200">
       <method v="2" />
     </configuration>
@@ -88,6 +82,16 @@
       <command value="run" />
       <scripts>
         <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -123,16 +127,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start:dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
@@ -145,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.lint" />
         <item itemvalue="npm.start:debug" />
         <item itemvalue="npm.watch" />
         <item itemvalue="npm.ncu" />
         <item itemvalue="npm.ng:update" />
-        <item itemvalue="npm.start:dev" />
       </list>
     </recent_temporary>
   </component>
@@ -232,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651933851468</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="* add client">
+      <created>1651942621022</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651942621022</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +263,7 @@
     <MESSAGE value="* update angular/core" />
     <MESSAGE value="* update libs" />
     <MESSAGE value="* WIP client-structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="* WIP client-structure" />
+    <MESSAGE value="* add client" />
+    <option name="LAST_COMMIT_MESSAGE" value="* add client" />
   </component>
 </project>
