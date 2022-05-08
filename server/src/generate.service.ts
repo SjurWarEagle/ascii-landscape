@@ -143,7 +143,7 @@ export class GenerateService {
               this.ICON_HOUSE_TENT,
               this.ICON_EMPTY,
             ],
-            [2, 2, 2, 4],
+            [2, 2, 1, 4],
           );
           break;
         case Culture.MEDIVAL_ASIAN:
