@@ -143,7 +143,7 @@ export class GenerateService {
               this.ICON_HOUSE_TENT,
               this.ICON_EMPTY,
             ],
-            [2, 2, 1, 4],
+            [5, 5, 1, 9],
           );
           break;
         case Culture.MEDIVAL_ASIAN:
@@ -166,7 +166,7 @@ export class GenerateService {
               this.ICON_HOUSE_4,
               this.ICON_EMPTY,
             ],
-            [5, 5, 2, 1, 2],
+            [5, 5, 2, 1, 5],
           );
           break;
         case Culture.MODERN_EUROPE:
@@ -179,7 +179,7 @@ export class GenerateService {
               this.ICON_HOUSE_3,
               this.ICON_EMPTY,
             ],
-            [5, 5, 2, 2, 1, 6],
+            [5, 5, 2, 2, 1, 8],
           );
           break;
         default:
