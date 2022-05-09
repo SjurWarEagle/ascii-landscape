@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { Chance } from 'chance';
-import { Weather } from './types/weather';
-import { Culture } from './types/culture';
+import { Culture } from 'src/types/culture';
+import { Weather } from 'src/types/weather';
+import {AreaJsonService} from "./area-json.service";
 
 @Injectable()
-export class GenerateService {
+export class LandscapeGenerateService {
   private readonly chance = new Chance();
 
   private readonly ROWS = 5;
   private readonly COLUMNS = 5;
 
-  private readonly ICON_EMPTY = ' ';
+  private readonly ICON_EMPTY = '\u2003';
   private readonly ICON_TREE_1 = '🌳';
   private readonly ICON_TREE_2 = '🌲';
   private readonly ICON_TREE_PALM = '🌴';
@@ -30,7 +31,10 @@ export class GenerateService {
   private readonly ICON_SKY_SUN_RAIN = '🌦';
   private readonly ICON_SKY_SUN_3 = '⛅';
 
-  generateNew(): string {
+  constructor(private areaJsonService:AreaJsonService) {
+  }
+
+  public generateNew(): string {
     let rc = '';
     const culture = this.generateCulture();
     const weather = this.generateWeather(culture);
@@ -47,7 +51,7 @@ export class GenerateService {
     }
     rc += this.generateBuildingLayer(culture);
 
-    return this.mapToJson(rc);
+    return this.areaJsonService.mapToJson(rc, this.ROWS);
   }
 
   private addSky(depth: number, weather: Weather): string {
@@ -191,17 +195,17 @@ export class GenerateService {
     return rc;
   }
 
-  private mapToJson(rc: string): any {
-    const rows = this.ROWS;
-
-    const formattedReturn = String(rc)
-      .split('\n')
-      .map((y) => y.replaceAll('\n', ''))
-      .filter((x) => x.length > 0)
-      .map((y) => [...y]);
-
-    return { landscape: formattedReturn, rows: rows, asText: rc };
-  }
+  // private mapToJson(rc: string): any {
+  //   const rows = this.ROWS;
+  //
+  //   const formattedReturn = String(rc)
+  //     .split('\n')
+  //     .map((y) => y.replaceAll('\n', ''))
+  //     .filter((x) => x.length > 0)
+  //     .map((y) => [...y]);
+  //
+  //   return { landscape: formattedReturn, rows: rows, asText: rc };
+  // }
 
   private generateCulture(): Culture {
     return this.chance.weighted(

@@ -1,0 +1,21 @@
+body {
+  font-family: 'Times New Roman', monospace;
+  font-size: x-large
+}
+
+pre {
+  background-color: cornflowerblue;
+}
+
+.container {
+  margin: 2em;
+  display: grid;
+  //grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, min-content);
+  gap: 10px;
+}
+
+
+app-landscape-display{
+  border: #727272 solid 1px;
+}
