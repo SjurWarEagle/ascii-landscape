@@ -5,7 +5,7 @@ import {MeadowOverviewComponent} from "./component/maedow-overview/meadow-overvi
 
 const routes: Routes = [
   {path: '', redirectTo: 'landscape', pathMatch: 'full'},
-  {path: 'maedow', component: MeadowOverviewComponent},
+  {path: 'meadow', component: MeadowOverviewComponent},
   {path: 'wiese', redirectTo: 'meadow', pathMatch: 'full'},
   {path: 'flower', redirectTo: 'meadow', pathMatch: 'full'},
   {path: 'meadows', redirectTo: 'meadow', pathMatch: 'full'},
