@@ -130,14 +130,14 @@ export class MeadowGenerateService {
         break;
       case this.ICON_FLOWER_7:
         rc = this.chance.weighted(
-          [this.ICON_FLOWER_7, this.ICON_FLOWER_3, this.ICON_FLOWER_GLOWER_3],
+          [this.ICON_FLOWER_7, this.ICON_FLOWER_3, this.ICON_FLOWER_8],
           [3, 2, 1],
         );
         break;
       case this.ICON_FLOWER_8:
         rc = this.chance.weighted(
-          [this.ICON_FLOWER_8, this.ICON_FLOWER_9],
-          [3, 2],
+          [this.ICON_FLOWER_8, this.ICON_FLOWER_8, this.ICON_FLOWER_GLOWER_3],
+          [3, 2, 2],
         );
         break;
       case this.ICON_FLOWER_9:
@@ -151,7 +151,7 @@ export class MeadowGenerateService {
           [
             this.ICON_FLOWER_GLOWER_3,
             this.ICON_FLOWER_GLOWER_4,
-            this.ICON_FLOWER_7,
+            this.ICON_FLOWER_8,
           ],
           [3, 1, 1],
         );
