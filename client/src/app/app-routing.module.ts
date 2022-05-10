@@ -6,9 +6,10 @@ import {MeadowOverviewComponent} from "./component/maedow-overview/meadow-overvi
 const routes: Routes = [
   {path: '', redirectTo: 'landscape', pathMatch: 'full'},
   {path: 'maedow', component: MeadowOverviewComponent},
-  {path: 'flower', redirectTo: 'maedow', pathMatch: 'full'},
-  {path: 'maedows', redirectTo: 'maedow', pathMatch: 'full'},
-  {path: 'flowers', redirectTo: 'maedow', pathMatch: 'full'},
+  {path: 'wiese', redirectTo: 'meadow', pathMatch: 'full'},
+  {path: 'flower', redirectTo: 'meadow', pathMatch: 'full'},
+  {path: 'meadows', redirectTo: 'meadow', pathMatch: 'full'},
+  {path: 'flowers', redirectTo: 'meadow', pathMatch: 'full'},
   {path: 'land', redirectTo: 'landscape', pathMatch: 'full'},
   {path: 'landscape', component: LandscapeOverviewComponent},
 ];
