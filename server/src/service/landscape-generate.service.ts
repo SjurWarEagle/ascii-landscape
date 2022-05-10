@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Chance } from 'chance';
 import { Culture } from 'src/types/culture';
 import { Weather } from 'src/types/weather';
-import {AreaJsonService} from "./area-json.service";
+import { AreaJsonService } from './area-json.service';
 
 @Injectable()
 export class LandscapeGenerateService {
@@ -31,8 +31,7 @@ export class LandscapeGenerateService {
   private readonly ICON_SKY_SUN_RAIN = '🌦';
   private readonly ICON_SKY_SUN_3 = '⛅';
 
-  constructor(private areaJsonService:AreaJsonService) {
-  }
+  constructor(private areaJsonService: AreaJsonService) {}
 
   public generateNew(): string {
     let rc = '';

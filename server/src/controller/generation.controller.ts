@@ -1,11 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import {LandscapeGenerateService} from "../service/landscape-generate.service";
-import {MeadowGenerateService} from "../service/meadow-generate.service";
+import { LandscapeGenerateService } from '../service/landscape-generate.service';
+import { MeadowGenerateService } from '../service/meadow-generate.service';
 
 @Controller('/api/generate')
 export class GenerationController {
-  constructor(private readonly landscapeGenerateService: LandscapeGenerateService,
-              private readonly maedowGenerateService: MeadowGenerateService) {}
+  constructor(
+    private readonly landscapeGenerateService: LandscapeGenerateService,
+    private readonly maedowGenerateService: MeadowGenerateService,
+  ) {}
 
   @Get('meadow/newNatural')
   public generateNewNaturalFlowers(): string {
