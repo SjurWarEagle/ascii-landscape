@@ -10,6 +10,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {LandscapeOverviewComponent} from "./component/landscape-overview/landscape-overview.component";
 import {MeadowDisplayComponent} from "./component/maedow-display/meadow-display.component";
 import {MeadowOverviewComponent} from "./component/maedow-overview/meadow-overview.component";
+import {ContinentOverviewComponent} from "./component/continent-overview/continent-overview.component";
+import {AreaDisplayComponent} from "./component/area-display/area-display.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import {MeadowOverviewComponent} from "./component/maedow-overview/meadow-overvi
     LandscapeOverviewComponent,
     MeadowDisplayComponent,
     MeadowOverviewComponent,
+    ContinentOverviewComponent,
+    AreaDisplayComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -1,19 +1,21 @@
-import { Module } from '@nestjs/common';
-import { join } from 'path';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { MeadowGenerateService } from './service/meadow-generate.service';
-import { GenerationController } from './controller/generation.controller';
-import { LandscapeGenerateService } from './service/landscape-generate.service';
-import { AreaJsonService } from './service/area-json.service';
+import {Module} from '@nestjs/common';
+import {join} from 'path';
+import {ServeStaticModule} from '@nestjs/serve-static';
+import {MeadowGenerateService} from './service/meadow-generate.service';
+import {GenerationController} from './controller/generation.controller';
+import {LandscapeGenerateService} from './service/landscape-generate.service';
+import {AreaJsonService} from './service/area-json.service';
+import {NaturalGenerateService} from "./service/natural-generate.service";
 
 @Module({
-  imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../', 'public'),
-      exclude: ['/api*', '/generate*'],
-    }),
-  ],
-  controllers: [GenerationController],
-  providers: [LandscapeGenerateService, MeadowGenerateService, AreaJsonService],
+    imports: [
+        ServeStaticModule.forRoot({
+            rootPath: join(__dirname, '../', 'public'),
+            exclude: ['/api*', '/generate*'],
+        }),
+    ],
+    controllers: [GenerationController],
+    providers: [LandscapeGenerateService, MeadowGenerateService, AreaJsonService, NaturalGenerateService],
 })
-export class AppModule {}
+export class AppModule {
+}

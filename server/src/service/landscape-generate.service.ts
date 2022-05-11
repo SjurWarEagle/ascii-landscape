@@ -11,7 +11,7 @@ export class LandscapeGenerateService {
   private readonly ROWS = 5;
   private readonly COLUMNS = 5;
 
-  private readonly ICON_EMPTY = '\u2003';
+  private readonly ICON_EMPTY = ' ';//'\u2003';
   private readonly ICON_TREE_1 = '🌳';
   private readonly ICON_TREE_2 = '🌲';
   private readonly ICON_TREE_PALM = '🌴';

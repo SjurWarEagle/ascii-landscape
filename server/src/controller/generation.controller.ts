@@ -1,12 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
 import { LandscapeGenerateService } from '../service/landscape-generate.service';
 import { MeadowGenerateService } from '../service/meadow-generate.service';
+import {NaturalGenerateService} from "../service/natural-generate.service";
+import {ContentTileFillingData} from "../service/content-tile-filling-data";
 
 @Controller('/api/generate')
 export class GenerationController {
   constructor(
     private readonly landscapeGenerateService: LandscapeGenerateService,
     private readonly maedowGenerateService: MeadowGenerateService,
+    private readonly naturalGenerateService: NaturalGenerateService,
   ) {}
 
   @Get('meadow/newNatural')
@@ -22,5 +25,14 @@ export class GenerationController {
   @Get('landscape/new')
   public generateNewRandomLandscape(): string {
     return this.landscapeGenerateService.generateNew();
+  }
+
+  @Get('continent/newRandom')
+  public generateNewRandomContinent(): string {
+    return this.naturalGenerateService.generateNewNaturalRandomTileSelection(new ContentTileFillingData());
+  }
+  @Get('continent/newColumns')
+  public generateNewColumnsContinent(): string {
+    return this.naturalGenerateService.generateNewNaturalColumnsTileSelection(new ContentTileFillingData());
   }
 }

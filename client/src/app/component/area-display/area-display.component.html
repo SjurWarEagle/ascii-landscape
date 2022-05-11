@@ -1,0 +1,5 @@
+<!--{{landscape}}-->
+<!--<hr>-->
+<div class="landscape" [cdkCopyToClipboard]="areaAsText" [style]="'grid-template-columns: repeat('+rows+', 25px);'">
+<span *ngFor="let field of area" [innerHTML]="asImage(field)" class="landscape-field"></span>
+</div>
