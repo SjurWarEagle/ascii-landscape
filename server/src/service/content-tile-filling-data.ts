@@ -12,6 +12,7 @@ export class ContentTileFillingData {
           { tile: '🌋', weight: 0.1 },
           { tile: '🗻', weight: 1 },
           { tile: '🌲', weight: 1 },
+          { tile: ' ', weight: 2 },
         ],
       },
       {
@@ -28,6 +29,7 @@ export class ContentTileFillingData {
           { tile: '⛰', weight: 2 },
           { tile: '🌲', weight: 1 },
           { tile: '🌳', weight: 1 },
+          { tile: ' ', weight: 2 },
         ],
       },
       {
@@ -46,6 +48,14 @@ export class ContentTileFillingData {
         source: '🌾',
         candidates: [
           { tile: '🌾', weight: 3 },
+          { tile: '🌲', weight: 1 },
+          { tile: '🌳', weight: 1 },
+        ],
+      },
+      {
+        source: ' ',
+        candidates: [
+          { tile: ' ', weight: 3 },
           { tile: '🌲', weight: 2 },
           { tile: '🌳', weight: 2 },
         ],
