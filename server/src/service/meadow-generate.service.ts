@@ -43,7 +43,7 @@ export class MeadowGenerateService {
         this.fillNatural(area);
         this.placeMainChar(area);
         return this.areaJsonService.mapToJson(
-            area.map((x) => x.join('')).join(''),
+            area.map((x) => x.join('')).join('\n'),
             this.ROWS,
         );
     }
