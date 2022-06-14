@@ -2,6 +2,7 @@ import {WfcGenerator} from "./wfc-generator";
 import {CellStructure} from "./cell-structure";
 import {MappingDataStructure} from "../../types/mapping-data-structure";
 import {CellUtils} from "./cell-utils";
+import {ContentTileFillingData} from "../content-tile-filling-data";
 
 function getTestMapping(): MappingDataStructure[] {
     return [
@@ -34,7 +35,7 @@ function getTestMapping(): MappingDataStructure[] {
 describe("Wave Function Collapse Generator", () => {
     test("Check initialization big map", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(1000, 1000, "🌲🏰🗻", getTestMapping());
+        await wfcGenerator.initialize(1000, 1000, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cells = (wfcGenerator as any).cells;
@@ -44,7 +45,7 @@ describe("Wave Function Collapse Generator", () => {
 
     test("Check initialization", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "🌲🏰🗻", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cells = (wfcGenerator as any).cells;
@@ -56,7 +57,7 @@ describe("Wave Function Collapse Generator", () => {
 
     test("Find first candidate", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cell = await (wfcGenerator as any).getNextCell();
@@ -68,7 +69,7 @@ describe("Wave Function Collapse Generator", () => {
 
     test("Ensure reference is used", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cell = await (wfcGenerator as any).getNextCell();
@@ -90,7 +91,7 @@ describe("Wave Function Collapse Generator", () => {
 
     test("Simple singe collapse", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cellSource = new CellStructure({x: 0, y: 0}, ['_']);
@@ -106,7 +107,7 @@ describe("Wave Function Collapse Generator", () => {
 
     test("Simple singe collapse - all possible", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cellSource = new CellStructure({x: 0, y: 0}, ['A']);
@@ -123,7 +124,7 @@ describe("Wave Function Collapse Generator", () => {
 
     test("Simple singe collapse - check marker", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cellSource = new CellStructure({x: 0, y: 0}, ['_']);
@@ -138,7 +139,7 @@ describe("Wave Function Collapse Generator", () => {
 
     test("collapse recursive - simple", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cellSource = wfcGenerator.cells.find(cell => cell.position.x === 0 && cell.position.y === 0);
@@ -166,11 +167,33 @@ describe("Wave Function Collapse Generator", () => {
         expect(cellS.possibleContents).toStrictEqual(['A', '_']);
     });
 
+    test("complete collapse - 10x10 without initial cell - real world data", async () => {
+        const cellUtils = new CellUtils();
+
+        const wfcGenerator = new WfcGenerator();
+        await wfcGenerator.initialize(30, 30, new ContentTileFillingData().mapping.data);
+        await wfcGenerator.completeCollapse();
+
+        const map = await cellUtils.convertToString(wfcGenerator.cells, wfcGenerator.height, wfcGenerator.width);
+        console.log('\n' + map);
+    });
+
+    test("complete collapse - 10x10 without initial cell", async () => {
+        const cellUtils = new CellUtils();
+
+        const wfcGenerator = new WfcGenerator();
+        await wfcGenerator.initialize(10, 10, getTestMapping());
+        await wfcGenerator.completeCollapse();
+
+        const map = await cellUtils.convertToString(wfcGenerator.cells, wfcGenerator.height, wfcGenerator.width);
+        console.log('\n' + map);
+    });
+
     test("complete collapse - small 3x3", async () => {
         const cellUtils = new CellUtils();
 
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
 
         const cellSource = wfcGenerator.cells.find(cell => cell.position.x === 1 && cell.position.y === 1);
         cellSource.possibleContents = ['_'];
@@ -188,7 +211,7 @@ describe("Wave Function Collapse Generator", () => {
         const cellUtils = new CellUtils();
 
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(10, 10, "#A_", getTestMapping());
+        await wfcGenerator.initialize(10, 10, getTestMapping());
 
         const cellSource = wfcGenerator.cells.find(cell => cell.position.x === 1 && cell.position.y === 1);
         cellSource.possibleContents = ['_'];
@@ -205,8 +228,8 @@ describe("Wave Function Collapse Generator", () => {
         const cellUtils = new CellUtils();
 
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(2, 2, "#A_", getTestMapping());
-        await wfcGenerator.initialize(20, 20, "#A_", getTestMapping());
+        await wfcGenerator.initialize(2, 2, getTestMapping());
+        await wfcGenerator.initialize(20, 20, getTestMapping());
 
         const cellSource = wfcGenerator.cells.find(cell => cell.position.x === 1 && cell.position.y === 1);
         cellSource.possibleContents = ['_'];
@@ -218,12 +241,13 @@ describe("Wave Function Collapse Generator", () => {
         const map = await cellUtils.convertToString(wfcGenerator.cells, wfcGenerator.height, wfcGenerator.width);
         console.log('\n' + map);
     });
+
     test("complete collapse - huge 100x100", async () => {
         //this test is not really testing something, it's more about "does it crash?"
         const cellUtils = new CellUtils();
 
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(100, 100, "#A_", getTestMapping());
+        await wfcGenerator.initialize(100, 100, getTestMapping());
 
         const cellSource = wfcGenerator.cells.find(cell => cell.position.x === 1 && cell.position.y === 1);
         cellSource.possibleContents = ['_'];
@@ -234,6 +258,18 @@ describe("Wave Function Collapse Generator", () => {
         // console.log(wfcGenerator.cells);
         const map = await cellUtils.convertToString(wfcGenerator.cells, wfcGenerator.height, wfcGenerator.width);
         console.log('\n' + map);
+    });
+
+    test("initialize - data filling", async () => {
+        const wfcGenerator = new WfcGenerator();
+        await wfcGenerator.initialize(3, 3, getTestMapping());
+        expect(wfcGenerator).toBeDefined();
+        expect((wfcGenerator as any).maxPossibilities).toBeDefined();
+        expect((wfcGenerator as any).maxPossibilities.length).toBe(3);
+        expect((wfcGenerator as any).maxPossibilities.indexOf('_')).not.toBe(-1);
+        expect((wfcGenerator as any).maxPossibilities.indexOf('A')).not.toBe(-1);
+        expect((wfcGenerator as any).maxPossibilities.indexOf('#')).not.toBe(-1);
+
     });
 
 });

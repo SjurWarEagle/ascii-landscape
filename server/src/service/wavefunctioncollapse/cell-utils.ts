@@ -1,6 +1,27 @@
 import {CellStructure} from "./cell-structure";
 
 export class CellUtils {
+    public async convertToArray(cells: CellStructure[], height, width): Promise<string[][]> {
+        let map = [];
+        let row = [];
+
+        for (let y = 0; y < height; y++) {
+            row=[]
+            for (let x = 0; x < width; x++) {
+                const idx = x + y * width;
+                //console.log(x,y,idx);
+                if (!cells[idx].content) {
+                    row.push('?')
+                } else {
+                    row.push(cells[idx].content);
+                }
+            }
+            map.push(row);
+        }
+
+        return map;
+    }
+
     public async convertToString(cells: CellStructure[], height, width): Promise<string> {
         let map = '';
 

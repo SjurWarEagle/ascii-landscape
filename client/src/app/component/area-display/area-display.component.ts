@@ -28,7 +28,7 @@ export class AreaDisplayComponent implements OnInit {
     //TODO make url parameter
     // const rc = await this.http.get('/api/generate/continent/newColumns').toPromise();
     const rc = await this.http.get('/api/generate/continent/newRandom').toPromise();
-    console.log(rc);
+    // console.log(rc);
     this.area = [];
     this.areaAsText = (rc as any).asText;
     this.rows = (rc as any).rows;

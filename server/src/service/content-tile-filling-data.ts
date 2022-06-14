@@ -1,4 +1,4 @@
-import { TileFilling } from './tile-filling';
+import {TileFilling} from "../types/tile-filling";
 
 export class ContentTileFillingData {
   public readonly mapping: TileFilling = new TileFilling();

@@ -17,6 +17,11 @@ export class GenerationController {
     return this.maedowGenerateService.generateNewNatural();
   }
 
+  @Get('meadow/newWaveformCollapse')
+  public async generateWaveformCollapse(): Promise<string> {
+    return await this.maedowGenerateService.generateWaveformCollapse();
+  }
+
   @Get('meadow/newRandom')
   public generateNewRandomFlowers(): string {
     return this.maedowGenerateService.generateNewRandom();

@@ -3,6 +3,7 @@ import {Injectable} from "@nestjs/common";
 import {CellStructure} from "./cell-structure";
 import {MappingDataStructure} from "../../types/mapping-data-structure";
 import {CellUtils} from "./cell-utils";
+import {uniq} from "lodash";
 
 @Injectable()
 export class WfcGenerator {
@@ -17,11 +18,14 @@ export class WfcGenerator {
     constructor() {
     }
 
-    public async initialize(width: number, height: number, maxPossibilities: string, mapping: MappingDataStructure[]): Promise<void> {
+    public async initialize(width: number, height: number, mapping: MappingDataStructure[]): Promise<void> {
         this.mapping = mapping;
         this.width = width;
         this.height = height;
-        this.maxPossibilities = maxPossibilities;
+        this.maxPossibilities = '';
+        mapping.forEach(m => Array.from(m.candidates).forEach(candidate => this.maxPossibilities += (candidate.tile)));
+        // https://stackoverflow.com/questions/33792050/how-to-iterate-over-over-all-unicode-characters
+        this.maxPossibilities = uniq(Array.from(this.maxPossibilities)).join('');
         await this.initCells(height, width);
     }
 
@@ -77,7 +81,7 @@ export class WfcGenerator {
         const changedCells = new Set<CellStructure>();
 
         for (let cell of await this.cellUtils.getNeighbours(sourceCell, this.cells)) {
-            if (cell.content!==undefined){
+            if (cell.content !== undefined) {
                 continue;
             }
             const direction = await this.cellUtils.determineDirection(sourceCell, cell);
@@ -96,10 +100,15 @@ export class WfcGenerator {
             throw new Error('Cell already defined! ' + targetCell);
         }
         const candidates = new Set();
-        let changeWasNeeded = false;
+        let changeWasNeeded;
 
-        sourceCell.possibleContents.forEach(s => {
-            this.mapping.find(m => m.source == s).candidates.map(c => c.tile).forEach((t => {
+        Array.from(sourceCell.possibleContents).forEach(s => {
+            const foundCand = this.mapping.find(m => m.source === s);
+            if (!foundCand) {
+                console.log('s', s);
+            }
+            const cands = foundCand.candidates;
+            cands.map(c => c.tile).forEach((t => {
                 candidates.add(t);
             }))
         })

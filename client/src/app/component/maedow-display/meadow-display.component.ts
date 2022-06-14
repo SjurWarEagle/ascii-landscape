@@ -25,8 +25,9 @@ export class MeadowDisplayComponent implements OnInit {
   }
 
   private async getNewArea(): Promise<void> {
-    const rc = await this.http.get('/api/generate/meadow/newNatural').toPromise();
-    console.log(rc);
+    const rc = await this.http.get('/api/generate/meadow/newWaveformCollapse').toPromise();
+    // const rc = await this.http.get('/api/generate/meadow/newNatural').toPromise();
+    // console.log(rc);
     this.area = [];
     this.areaAsText = (rc as any).asText;
     this.rows = (rc as any).rows;

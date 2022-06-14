@@ -34,7 +34,7 @@ describe("Cell Utils", () => {
 
     test("getNeighbours center", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cellUtils = new CellUtils();
@@ -47,7 +47,7 @@ describe("Cell Utils", () => {
 
     test("getNeighbours corner", async () => {
         const wfcGenerator = new WfcGenerator();
-        await wfcGenerator.initialize(3, 3, "#A_", getTestMapping());
+        await wfcGenerator.initialize(3, 3, getTestMapping());
         expect(wfcGenerator).toBeDefined();
 
         const cellUtils = new CellUtils();

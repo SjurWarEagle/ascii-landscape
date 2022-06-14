@@ -1,6 +1,9 @@
 import {Injectable} from '@nestjs/common';
 import {Chance} from 'chance';
 import {AreaJsonService} from './area-json.service';
+import {WfcGenerator} from "./wavefunctioncollapse/wfc-generator";
+import {ContentTileFillingData} from "./content-tile-filling-data";
+import {CellUtils} from "./wavefunctioncollapse/cell-utils";
 
 @Injectable()
 export class MeadowGenerateService {
@@ -46,6 +49,17 @@ export class MeadowGenerateService {
             area.map((x) => x.join('')).join('\n'),
             this.ROWS,
         );
+    }
+
+    public async generateWaveformCollapse(): Promise<string> {
+        const generator = new WfcGenerator();
+        const cellUtils = new CellUtils();
+
+        await generator.initialize(30,30,new ContentTileFillingData().mapping.data);
+        await generator.completeCollapse();
+        const area = await cellUtils.convertToString(generator.cells, generator.height, generator.width);
+
+        return this.areaJsonService.mapToJson(area, generator.height);
     }
 
     public generateNewRandom(): string {
